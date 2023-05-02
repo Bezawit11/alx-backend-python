@@ -14,8 +14,8 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     for i in range(n):
         a = await wait_random(max_delay)
         lm.append(a)
-    for i in range(0,len(lm)):
-        for j in range(0,len(lm)):
+    for i in range(0, len(lm)):
+        for j in range(0, len(lm)):
             if lm[i] < lm[j]:
                 tem = lm[i]
                 lm[i] = lm[j]
