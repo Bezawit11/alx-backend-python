@@ -5,8 +5,8 @@
 import asyncio, random
 
 
-async def wait_random(max_delay=10):
+async def wait_random(max_delay: int = 10) -> float:
     """ waits for a random delay between 0 and max_delay"""
-    a = random.uniform(0, flaot(max_delay + 1))
+    a = random.uniform(0, max_delay + 1)
     await asyncio.sleep(a)
     return a
