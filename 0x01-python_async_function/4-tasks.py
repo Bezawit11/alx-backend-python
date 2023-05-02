@@ -3,8 +3,8 @@
 
 
 import asyncio
-import random
 from typing import List
+import random
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
@@ -14,4 +14,4 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
     for i in range(n):
         a = await task_wait_random(max_delay)
         lm.append(a)
-    return lm.sort()
+    return lm
