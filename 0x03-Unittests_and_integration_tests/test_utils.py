@@ -35,5 +35,5 @@ class TestGetJson(unittest.TestCase):
         ])
     @mock.patch('utils.requests.get')
     def test_get_json(self, url, expected):
-        my_mock_response.json.return_value = expected
+        self.assertEqual(get_json(url), expected)
 
