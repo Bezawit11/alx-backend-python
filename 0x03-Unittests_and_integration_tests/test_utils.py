@@ -18,7 +18,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a", "b"), 2)
         ])
     def test_access_nested_map(self, n, path, expected):
-        ""the func returns the expected result""""
+        """the func returns the expected result"""
         self.assertEqual(access_nested_map(n, path), expected)
 
     @parameterized.expand([
@@ -54,10 +54,12 @@ class TestMemoize(unittest.TestCase):
             """"test class"""
 
             def a_method(self):
+                """a method"""
                 return 42
 
             @memoize
             def a_property(self):
+                """a property"""
                 return self.a_method()
 
         with patch.object(TestClass, 'a_method') as m:
