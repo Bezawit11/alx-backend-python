@@ -11,13 +11,14 @@ memoize = __import__('utils').memoize
 
 
 class TestAccessNestedMap(unittest.TestCase):
-    """"""
+    """Parameterize a unit test"""
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {'b': 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
         ])
     def test_access_nested_map(self, n, path, expected):
+        ""the func returns the expected result""""
         self.assertEqual(access_nested_map(n, path), expected)
     
     @parameterized.expand([
@@ -25,6 +26,7 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": 1}, ("a", "b"))
         ])
     def test_access_nested_map_exception(self, n, path):
+        """KeyError is raised for the inputs"""
         with self.assertRaises(KeyError) as context:
             access_nested_map(n, path)
 
@@ -35,6 +37,7 @@ class TestGetJson(unittest.TestCase):
         ("http://holberton.io", {"payload": False})
         ])
     def test_get_json(self, url, load):
+        """Mock HTTP calls"""
         d = {'return_value.json.return_value': load}
         patcher = patch('requests.get', **d)
         mock_read = patcher.start()
@@ -46,6 +49,7 @@ class TestMemoize(unittest.TestCase):
     """test memoize"""
     def test_memoize(self):
         """test memoize"""
+
         class TestClass:
             """"test class"""
             def a_method(self):
