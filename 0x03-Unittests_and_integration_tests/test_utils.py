@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""unittest"""
+"""unit test"""
 
 
 import unittest
@@ -54,10 +54,12 @@ class TestMemoize(unittest.TestCase):
             """"test class"""
 
             def a_method(self):
+                """ä method"""
                 return 42
 
             @memoize
             def a_property(self):
+                """ä property"""
                 return self.a_method()
 
         with patch.object(TestClass, 'a_method') as m:
@@ -65,4 +67,3 @@ class TestMemoize(unittest.TestCase):
             t_class.a_property()
             t_class.a_property()
             m.assert_called_once()
-            # self.assertEqual(a_property(), 42)
