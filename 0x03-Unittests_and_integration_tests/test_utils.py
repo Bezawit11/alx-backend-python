@@ -4,6 +4,7 @@
 
 import unittest
 from parameterized import parameterized, parameterized_class
+from unittest.mock import patch
 access_nested_map = __import__('utils').access_nested_map
 get_json = __import__('utils').get_json
 
@@ -32,5 +33,7 @@ class TestGetJson(unittest.TestCase):
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
         ])
+    @patch('utils.requests')
     def test_get_json(self, url):
-
+        with patch('utils.requests') as mock_requests:
+            mock_requests.get.assert_called_once()
