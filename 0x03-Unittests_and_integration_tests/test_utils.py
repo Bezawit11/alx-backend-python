@@ -56,7 +56,7 @@ class TestMemoize(unittest.TestCase):
     
         with patch.object(TestClass, 'a_method') as m:
             t_class = TestClass()
-            t_class.a_prperty()
+            t_class.a_property()
             t_class.a_property()
             m.assert_called_once()
 
