@@ -33,7 +33,6 @@ class TestGetJson(unittest.TestCase):
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
         ])
-    @mock.patch('utils.requests.get')
-    def test_get_json(self, url, expected):
-        self.assertEqual(get_json(url), expected)
+    def test_get_json(self, url, load):
+        self.assertEqual(get_json(url), load)
 
