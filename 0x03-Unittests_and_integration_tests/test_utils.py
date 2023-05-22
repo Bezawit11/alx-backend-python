@@ -40,3 +40,15 @@ class TestGetJson(unittest.TestCase):
         self.assertEqual(get_json(url), load)
         mock_read.assert_called_once()
         patcher.stop()
+
+class TestMemoize(unittest.TestCase):
+    """test memoize"""
+    def test_memoize(self):
+        class TestClass:
+
+    def a_method(self):
+        return 42
+
+    @memoize
+    def a_property(self):
+        return self.a_method()
