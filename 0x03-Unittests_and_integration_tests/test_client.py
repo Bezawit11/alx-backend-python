@@ -9,7 +9,6 @@ from parameterized import parameterized
 get_json = __import__('utils').get_json
 
 
-
 class TestGithubOrgClient(unittest.TestCase):
     """"test github client"""
 
