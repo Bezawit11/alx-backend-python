@@ -22,6 +22,14 @@ class TestGithubOrgClient(unittest.TestCase):
         g = GithubOrgClient(url)
         self.assertEqual(g.org(), {})
         mock_org.assert_called_once()
+
+    def test_public_repos_url(self):
+        """test public repos"""
+        with patch('GithubOrgClient.org') as mock:
+            c = GithhubOrgClient('url')
+            mock.return_value = {"repos_url": "tester"}
+            self.assertEqual(c._public_repos_url(), mock.return_value)
+            
         
      
         
