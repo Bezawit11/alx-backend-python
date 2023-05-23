@@ -29,8 +29,11 @@ class TestGithubOrgClient(unittest.TestCase):
             c = GithhubOrgClient('url')
             mock.return_value = {"repos_url": "tester"}
             self.assertEqual(c._public_repos_url(), mock.return_value)
-            
-        
-     
-        
-        
+    @patch('get_json') 
+    def test_public_repos(self):
+        """test public repos"""
+        with patch('GithubOrgClient._public_repos_url') as mock:
+            c = GithhubOrgClient('url')
+            mock.return_value = [{"tester1": "result1", "tester2": "result2"}]
+            self.assertEqual(c._public_repos(), mock.return_value)
+
