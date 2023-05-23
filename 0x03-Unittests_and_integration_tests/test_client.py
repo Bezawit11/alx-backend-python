@@ -6,11 +6,12 @@ import unittest
 from unittest.mock import patch
 from client import GithubOrgClient
 get_json = __import__('utils').get_json
-from parameterized import parameterized, parameterized_class
+from parameterized import parameterized
 
 
 class TestGithubOrgClient(unittest.TestCase):
     """"test github client"""
+
     @parameterized.expand([
         ('google'),
         ('abc')
@@ -29,6 +30,7 @@ class TestGithubOrgClient(unittest.TestCase):
             c = GithhubOrgClient('url')
             mock.return_value = {"repos_url": "tester"}
             self.assertEqual(c._public_repos_url(), mock.return_value)
+
     @patch('get_json') 
     def test_public_repos(self):
         """test public repos"""
@@ -36,4 +38,3 @@ class TestGithubOrgClient(unittest.TestCase):
             c = GithhubOrgClient('url')
             mock.return_value = [{"tester1": "result1", "tester2": "result2"}]
             self.assertEqual(c._public_repos(), mock.return_value)
-
