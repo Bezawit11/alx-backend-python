@@ -38,3 +38,11 @@ class TestGithubOrgClient(unittest.TestCase):
             c = GithhubOrgClient('url')
             mock.return_value = [{"tester1": "result1", "tester2": "result2"}]
             self.assertEqual(c._public_repos(), mock.return_value)
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False)
+        ])
+    def test_has_license(self, repo, license_key, expected):
+        """test has license"""
+        c = GithhubOrgClient('test')
+        self.assertEqual(c.has_license(reo, license_key), expected)
